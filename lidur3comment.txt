@@ -1,18 +1,4 @@
-Endurgerði plot-dótið. Nú höfum við sage-fallið
-
-def plotter(x1, x2, y2, L1, L2, L3, x, y, th, gam):
-    res = circle((0,0),0.025,fill=True,rgbcolor=(0,0,1))
-    res += circle((x1,0),0.025,fill=True,rgbcolor=(0,0,1))
-    res += circle((x2,y2),0.025,fill=True,rgbcolor=(0,0,1))
-    res += circle((x,y),0.025,fill=True,rgbcolor=(0,0,1))
-    res += circle((x+L3*cos(th),y+L3*sin(th)),0.025,fill=True,rgbcolor=(0,0,1))
-    res += circle((x+L2*cos(th+gam),y+L2*sin(th+gam)),0.025,fill=True,rgbcolor=(0,0,1))
-    res += line([(0,0),(x,y),(x+L2*cos(th+gam),y+L2*sin(th+gam))],rgbcolor=(0,0,1))
-    res += line([(x1,0),(x+L3*cos(th),y+L3*sin(th)),(x,y)],rgbcolor=(0,0,1))
-    res += line([(x2,y2),(x+L2*cos(th+gam),y+L2*sin(th+gam)),(x+L2*cos(th),y+L2*sin(th))],rgbcolor=(0,0,1))
-    return res
-
-sem plottar lausnina fyrir gefið inntak. Þá má plotta dótið í lið 3 með
+Endurgerði plot-dótið. Nú höfum við sage-fallið plotter úr lið 1 sem plottar lausnina fyrir gefið inntak. Þá má plotta dótið í lið 3 með
 
 plotter(4, 0, 4, 2, sqrt(2), sqrt(2), 2, 1, pi/4, pi/2)
 plotter(4, 0, 4, 2, sqrt(2), sqrt(2), 1, 2, -pi/4, pi/2)
