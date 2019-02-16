@@ -1,0 +1,3 @@
+Fyrri myndin í lið 3 fékkst með sage skipuninni 
+
+circle((0,0),0.025,fill=True,rgbcolor=(0,0,1))+circle((0,4),0.025,fill=True,rgbcolor=(0,0,1))+circle((1,2),0.025,fill=True,rgbcolor=(0,0,1))+circle((2,1),0.025,fill=True,rgbcolor=(0,0,1))+circle((2,3),0.025,fill=True,rgbcolor=(0,0,1))+circle((4,0),0.025,fill=True,rgbcolor=(0,0,1))+line([(0,0),(1,2),(2,3)],rgbcolor=(0,0,1))+line([(0,4),(2,3),(2,1)],rgbcolor=(0,0,1))+line([(4,0),(2,1),(1,2)],rgbcolor=(0,0,1))
