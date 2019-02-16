@@ -1,3 +1,14 @@
 Fyrsta myndin fæst með
 
 plot(g(5, 0, 6, 3, 3*sqrt(2), 3, pi/4, 5, 5, 3), (-pi,pi))
+
+Útfrá plottinu sést sirka í hvaða bilum núllstöðvar eru, finnum þær með
+
+sage: find_root(h, -1, -0.6)
+-0.7208492044603897
+sage: find_root(h, -0.6, 0)
+-0.33100518428386877
+sage: find_root(h, 1, 1.5)
+1.1436855178213736
+sage: find_root(h, 1.5, 2.5)
+2.1159090140864585
