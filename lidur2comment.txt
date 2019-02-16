@@ -1,0 +1,15 @@
+Plottið í lið 2 var fengið með skipuninni 
+
+plot(f(x), (x,-pi,pi))
+
+í sage eftir að
+
+L1 = 2
+L2 = L3 = sqrt(2)
+gam = pi/2
+p1 = p2 = p3 = sqrt(5)
+x1 = 4
+x2 = 0
+y2 = 4
+
+var keyrt fyrst.
