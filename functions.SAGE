@@ -52,7 +52,7 @@ def xyfromth(x1, x2, y2, L1, L2, L3, gam, p1, p2, p3, th):
     N1 -= B2*(p3**2-p1**2-A3**2-B3**2)
     N2 = A2*(p3**2-p1**2-A3**2-B3**2)
     N2 -= A3*(p2**2-p1**2-A2**2-B2**2)
-    return N1/D, N2/D
+    return (N1/D).n(), (N2/D).n()
 
 def find_all_roots(f, a, b, eps=0.0000000001):
     roots = []
