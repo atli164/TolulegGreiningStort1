@@ -1,0 +1,16 @@
+Basically sama og liður 4, fyrsta myndin fæst með
+
+plot(g(5, 0, 6, 3, 3*sqrt(2), 3, pi/4, 5, 7, 3), (-pi,pi))
+
+Finnum rætur með
+
+r = find_all_roots(g(5, 0, 6, 3, 3*sqrt(2), 3, pi/4, 5, 7, 3), -pi, pi)
+
+Finnum  x og y með
+
+xys = [xyfromth(5, 0, 6, 3, 3*sqrt(2), 3, pi/4, 5, 7, 3, k) for k in r]
+
+Plottum þetta allt svo með
+
+for i in range(len(r)):
+    plotter(5, 0, 6, 3, 3*sqrt(2), 3, xys[i][0], xys[i][1], r[i], pi/4)
