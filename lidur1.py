@@ -54,3 +54,20 @@ def xyfromth(x1, x2, y2, L1, L2, L3, gam, p1, p2, p3, th):
     N2 -= A3*(p2**2-p1**2-A2**2-B2**2)
     return N1/D, N2/D
 
+def find_all_roots(f, a, b, eps=0.0000000001):
+    roots = []
+    intervals_to_check = [(a,b)]
+    while intervals_to_check:
+        start, end = intervals_to_check.pop()
+        try:
+            root = find_root(f, start, end)
+        except RuntimeError:
+            continue
+        if root in roots:
+            continue
+        if abs(f(root)) < 1:
+            roots.append(root)
+        intervals_to_check.extend([(start, root-eps), (root+eps, end)])
+    roots.sort()
+    return roots
+
