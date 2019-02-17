@@ -1,5 +1,27 @@
 Plotta má myndina fyrir lið 7 með
 
-solsnumfromp2(5, 0, 6, 3, 3*sqrt(2), 3, pi/4, 5, 3)
+plot(solsnumfromp2(5, 0, 6, 3, 3*sqrt(2), 3, pi/4, 5, 3), 0, 20)
 
-Þetta leysir í leiðinni lið 6, höfum t.d. 4 sem lausn
+Þetta leysir í leiðinni lið 6, höfum t.d. 4 sem lausn. Getum svo fundið bilin sem það breytist á með
+
+curh = solsnumfromp2(5, 0, 6, 3, 3*sqrt(2), 3, pi/4, 5, 3)
+curv = curh(0)
+changes = []
+for i in range(1000):
+    nxtv = curh((i + 1) / 100)
+    if nxtv != curv:
+        changes.append((i / 100), (i + 1) / 100))
+    curv = nxtv
+
+sem gefur okkur bilin
+
+[(371/100, 93/25),
+ (463/100, 116/25),
+ (243/50, 487/100),
+ (174/25, 697/100),
+ (351/50, 703/100),
+ (703/100, 176/25),
+ (196/25, 157/20),
+ (919/100, 46/5)]
+
+sem eru jafn mörg og á plottinu. Þá er bara að reikna út nákvæmari gildi á þessum bilum.
