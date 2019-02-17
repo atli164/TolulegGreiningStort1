@@ -25,3 +25,48 @@ sem gefur okkur breytingarpunkta
  (919/100, 46/5)]
 
 sem eru jafn margir og á plottinu. Þá er bara að reikna út nákvæmari gildi á þessum bilum.
+
+exactchanges = [float("-inf")]
+for c in changes:
+    lpos, rpos = c[0], c[1]
+    lval, rval = curh(lpos), curh(rpos)
+    while rpos - lpos > 1e-9:
+        mpos = ((lpos + rpos) / 2).n()
+        mval = curh(mpos)
+        if mval == lval:
+            lpos = mpos
+        else:
+            rpos = mpos
+    exactchanges.append((lpos + rpos) / 2)
+exactchanges.append(float("inf"))
+
+sem gefur
+
+[-inf,
+ 3.71053114980459,
+ 4.63160214930773,
+ 4.86372385472059,
+ 6.96734398752451,
+ 7.02234040886164,
+ 7.03075937300920,
+ 7.84908692449331,
+ 9.19254726916552,
+ inf]
+
+svo þá getum við loks fengið öll bilin með
+
+intervals = []
+for i in range(len(exactchanges) - 1):
+    intervals.append(((exactchanges[i], exactchanges[i + 1]), curh((exactchanges[i] + exactchanges[i + 1]) / 2)))
+    
+sem gefur loks að öll bilin með öllum fallgildum þeirra eru
+
+[((-inf, 3.71053114980459), 0),
+ ((3.71053114980459, 4.63160214930773), 2),
+ ((4.63160214930773, 4.86372385472059), 0),
+ ((4.86372385472059, 6.96734398752451), 4),
+ ((6.96734398752451, 7.02234040886164), 6),
+ ((7.02234040886164, 7.03075937300920), 2),
+ ((7.03075937300920, 7.84908692449331), 4),
+ ((7.84908692449331, 9.19254726916552), 2),
+ ((9.19254726916552, inf), 0)]
