@@ -4,11 +4,13 @@ plot(g(5, 0, 6, 3, 3*sqrt(2), 3, pi/4, 5, 5, 3), (-pi,pi))
 
 Útfrá plottinu sést sirka í hvaða bilum núllstöðvar eru, finnum þær með
 
-sage: find_root(h, -1, -0.6)
--0.7208492044603897
-sage: find_root(h, -0.6, 0)
--0.33100518428386877
-sage: find_root(h, 1, 1.5)
-1.1436855178213736
-sage: find_root(h, 1.5, 2.5)
-2.1159090140864585
+r = find_all_roots(g(5, 0, 6, 3, 3*sqrt(2), 3, pi/4, 5, 5, 3), -pi, pi)
+
+Finnum svo samsvarandi x og y með
+
+xys = [xyfromth(5, 0, 6, 3, 3*sqrt(2), 3, pi/4, 5, 5, 3, k) for k in r]
+
+Plottum þetta allt svo með
+
+for i in range(len(r)):
+    plotter(5, 0, 6, 3, 3*sqrt(2), 3, xys[i][0], xys[i][1], r[i], pi/4)
