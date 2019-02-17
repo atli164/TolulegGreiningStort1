@@ -13,7 +13,7 @@ for i in range(1000):
         changes.append((i / 100), (i + 1) / 100))
     curv = nxtv
 
-sem gefur okkur bilin
+sem gefur okkur breytingarpunkta
 
 [(371/100, 93/25),
  (463/100, 116/25),
@@ -24,4 +24,4 @@ sem gefur okkur bilin
  (196/25, 157/20),
  (919/100, 46/5)]
 
-sem eru jafn mörg og á plottinu. Þá er bara að reikna út nákvæmari gildi á þessum bilum.
+sem eru jafn margir og á plottinu. Þá er bara að reikna út nákvæmari gildi á þessum bilum.
