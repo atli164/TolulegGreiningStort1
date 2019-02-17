@@ -1,3 +1,5 @@
 Plotta má myndina fyrir lið 7 með
 
 solsnumfromp2(5, 0, 6, 3, 3*sqrt(2), 3, pi/4, 5, 3)
+
+Þetta leysir í leiðinni lið 6, höfum t.d. 4 sem lausn
