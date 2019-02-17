@@ -87,5 +87,5 @@ def solsnumfromp2(x1, x2, y2, L1, L2, L3, gam, p1, p3):
             N2 -= A3*(p2**2-p1**2-A2**2-B2**2)
             return (N1**2+N2**2-p1**2*D**2).n()
         return len(find_all_roots(f, -pi, pi))
-    return plot(h, 0, 20)
+    return h
 
