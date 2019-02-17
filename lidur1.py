@@ -37,7 +37,7 @@ def plotter(x1, x2, y2, L1, L2, L3, x, y, th, gam):
     res += circle((x+L2*cos(th+gam),y+L2*sin(th+gam)),0.025,fill=True,rgbcolor=(0,0,1))
     res += line([(0,0),(x,y),(x+L2*cos(th+gam),y+L2*sin(th+gam))],rgbcolor=(0,0,1))
     res += line([(x1,0),(x+L3*cos(th),y+L3*sin(th)),(x,y)],rgbcolor=(0,0,1))
-    res += line([(x2,y2),(x+L2*cos(th+gam),y+L2*sin(th+gam)),(x+L2*cos(th),y+L2*sin(th))],rgbcolor=(0,0,1))
+    res += line([(x2,y2),(x+L2*cos(th+gam),y+L2*sin(th+gam)),(x+L3*cos(th),y+L3*sin(th))],rgbcolor=(0,0,1))
     return res
 
 def xyfromth(x1, x2, y2, L1, L2, L3, gam, p1, p2, p3, th):
