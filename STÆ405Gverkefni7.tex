@@ -60,7 +60,11 @@
 	{\large \today\par}
 \end{titlepage}
 
-Öll hjálparföll sem vitnuð eru í eru gefin aftast í viðauka með öllum hjálparföllum. Í þessu verkefni notuðumst við við sage sem forritunarmálið okkar. Sage er útvíkkun á python, í raun bara python með fullt af pökkum fyrifram (numpy, scipy, sympy, etc.). Fyrst er beðið um að forrita fall $f$ sem tekur inn $\theta$ (liður 1). Þetta fall fá finna í viðaukanum. Ef við prófum fallið á umbeðni inntaki fæst eftirfarandi niðurstaða: \\
+Öll hjálparföll má finna í viðauka ásamt öðrum kóða. Í þessu verkefni
+notuðumst við við sage sem forritunarmálið okkar. Sage er útvíkkun á python
+þ.e.a.s. python með numpy, scipy, sympy, osfrv. innihaldið sjálfkrafa.\\
+
+Fyrst er beðið um að forrita fall $f$ sem tekur inn $\theta$ (liður 1). Þetta fall má finna í viðaukanum. Ef við prófum fallið á umbeðnu inntaki fæst eftirfarandi niðurstaða: \\
 
 \begin{minted}{sage}
 sage: x1, x2, y2 = 4, 0, 4
@@ -286,7 +290,7 @@ sage: exactchanges.append(float("inf"))
 
 \vspace*{0.5cm}
 
-Nú loks til þess að fá hvaða fallgildi eru á hvaða bilum getum við loks notað eftirfarandi forritskóða: \\
+Til þess að fá hvaða fallgildi eru á hvaða bilum getum við loks notað eftirfarandi forritskóða: \\
 
 \begin{minted}{sage}
 sage: intervals = []
@@ -297,7 +301,7 @@ sage: for i in range(len(exactchanges) - 1):
 
 \vspace*{0.5cm}
 
-Þetta gefur okkur loks eftirfarandi niðurstöðu: \\
+Sem gefur eftirfarandi niðurstöðu: \\
 
 \begin{verbatim}
 [((-inf, 3.71053114980459), 0),
@@ -310,6 +314,36 @@ sage: for i in range(len(exactchanges) - 1):
  ((7.84908692449331, 9.19254726916552), 2),
 ((9.19254726916552, inf), 0)]
 \end{verbatim}
+
+\vspace*{0.5cm}
+
+Að lokum áttum við að framlengju niðurstöður þannig þær gangi í þremur víddum
+(svokallað Stewart platform). Verkefnið má skilgreina þannig að við fáum gefnar
+lengdir allra brúna í óreglulegum áttflötung og við viljum finna hnit hornpunkta
+hliðar í hnitakerfi sem skilgreinist þannig að gagnstæð hlið liggi í XY-planinu.
+
+Við getum kallað hornpunkta áttflötungsins $A,B,C,X,Y,Z$ þar sem $A,B,C$ eru
+hnitin sem við þekkjum og $X,Y,Z$ eru hnitin sem við viljum finna.
+
+Ástæðan fyrir að við þekkjum $A,B,C$ er að við getum valið einn þeirra sem
+núllpunktinn, $(0,0,0)$, og leitt út hina með hornaföllum (við þekkjum
+lengdirnar $|AB|, |BC|, |AC|$ þannig þyrftum bara beita kósínusarreglu).
+
+Næst getum við notað lengdirnar $|BX|$ og $|CX|$ til þess að finna skurðferil
+kúlnanna með miðjur í $B$ og $C$ með þessa radíusa (í röð). Þetta má einnig gera
+fyrir hin tvö hnitin, $Y$ og $Z$ s.s. með því að skoða $|AY|$ og $|CY|$ með
+miðjur $A$ og $C$ og svo $|AZ|$ og $|BZ|$ með miðjur $A$ og $B$.
+
+Þá höfum við þrjá hringferla í $\mathbb{R}^3$ (með jákvæð $z$-hnit) og þurfum að
+finna hnit á þeim, $X,Y,Z$, þannig að lengdirnar $|XY|, |YZ|, |ZX|$ sé eins og
+inntök. Þetta verkefni má leysa með því að finna ystu gildin fyrir einhvern
+hringferil, t.d. $X$, þ.a. $|XY|$ og $|ZX|$ geti verið rétt lengd og svo
+helmingunarleita á því bili hvort $|YZ|$ gangi.
+
+Verkefnið er s.s. að beita ítrekað leitunaraðferðum til að mæta sífellt harðari
+skorðum þangað til að hnitin $X,Y,Z$ eru fundin.
+
+
 
 \section*{Viðauki - kóði:}
 
