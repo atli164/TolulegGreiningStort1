@@ -94,16 +94,26 @@ for ci in range(len(cfuncs)):
     plotequi(px, py, dpx, dpy, 10 ** (-4), 20, cfuncs[ci], '20pt' + str(ci))
 """
 def frameplot(x, y, dx, dy, tol, n, c, name, xb, yb):
+    listi = []
     var('t') # enga hugmynd hvad thetta gerir, en kemur ekki ad sok.
+    pl = parametric_plot((x(t), y(t)), (t, 0, 1),figsize=[3,4],
+                            aspect_ratio=1,xmin=xb[0],
+                            xmax=xb[1], ymin=yb[0],ymax=yb[1])
     for i in range(n):
-        pl = parametric_plot((x(t), y(t)), (t, 0, 1),figsize=[3,4],
-                             aspect_ratio=1,xmin=xb[0],
-                             xmax=xb[1], ymin=yb[0],ymax=yb[1], fig_tight=True)
         pos = bissearch(dx, dy, tol, i / (n - 1), c)
-        pl += point((x(pos), y(pos)))
-        pl.save(name + '_frame' + str(i//10)+str(i%10) + '.png')
+        listi.append(point((x(pos), y(pos)),figsize=[3,4],
+                     aspect_ratio=1,xmin=xb[0],
+                     xmax=xb[1], ymin=yb[0],ymax=yb[1]))
+    a = animate(listi)
+    a.gif(savefile=name+'.gif', show_path=True)
+        #pl.save(name + '_frame' + str(i//10)+str(i%10) + '.png')
 
-frameplot(px,py,dpx,dpy,10 ** (-4), 100, c1, 'curve1', (0,1.5), (0,2.0))
+# frameplot(px,py,dpx,dpy,10 ** (-4), 100, c1, 'curve1', (0,1.5), (0,2.0))
 
 
+def punktskra(x,y,dx,dy,tol,n,c):
+    for i in range(n):
+        pos = bissearch(dx,dy,tol, i/(n-1), c)
+        print(x(pos), y(pos))
 
+punktskra(px,py,dpx, dpy, 10 ** (-4), 100, c1)
