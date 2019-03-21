@@ -244,8 +244,65 @@ def newtsearch(dx, dy, tol, s, c):
 
 \vspace*{0.5cm}
 
-TODO: Animate
+Svo eigum við að gera þetta sama fyrir einhvern Bézier feril í lið 6, gerum lið 5 síðast. Til þess að fá sem mest áberandi mun á hreyfimundunum sem koma síðar í þessu verkefni varð V-laga ferill valinn sem gefinn er með
 
-TODO: Bezier
+\[x(t) = 3t - 6t^2 + 4t^3, \quad y(t) = 1 - 3t + 3t^2\]
+
+Til þess að geta unnið með þennan feril í sage skilgreindum við eftirfarandi hjálparföll: \\
+
+\begin{minted}{python}
+def bx(t):
+    return 3 * t - 6 * t ** 2 + 4 * t ** 3
+
+def by(t):
+    return 1 - 3 * t + 3 * t ** 2
+
+def dbx(t):
+    return 3 - 12 * t + 12 * t ** 2
+
+def dby(t):
+    return -3 + 6 * t
+\end{minted}
+
+\vspace*{0.5cm}
+
+Þá má nota sama kóða og ofar til þess að fá mynd af þessum ferli skiptan í 20 jöfn bil. Það má einfaldlega gera með skipuninni \\ \texttt{plotequi(bx, by, dbx, dby, 10 ** (-4), 20, c1, '20ptbez')} \\ og fæst þá eftirfarandi mynd: \\
+
+\begin{center}
+\includegraphics[scale=0.7]{20ptbez}
+\end{center}
+
+\vspace*{0.5cm}
+
+Loks eigum við að búa til hreyfimyndir af $P$ og Bézier-ferlinum þar sem punkturinn er látinn hreyfast eftir ferlinum annars vegar með stikuninni og svo með jöfnum hraða. Til þess getum við notað eftirfarandi kóða: \\
+
+\begin{minted}{python}
+def frameplot(x, y, dx, dy, tol, n, c, name, useC):
+    pts, poss = [], []
+    for i in range(n + 1):
+        pos = bissearch(dx, dy, tol, i / n, c)
+        pts.append((x(pos), y(pos)))
+        poss.append(pos)
+    imgs = []
+    pl = line(pts, figsize=[3,4], rgbcolor=(0,0,1))
+    if useC:
+        for p in pts:
+            imgs.append(pl + point(p, rgbcolor=(1,0,0), size=20))
+    else:
+        for i in range(n + 1):
+            imgs.append(pl + point((x(i / n), y(i / n)), 
+                rgbcolor=(1,0,0), size=20))
+    a = animate(imgs)
+    a.gif(savefile=name+'.gif', show_path=True, delay=5)
+
+frameplot(px,py,dpx,dpy,10 ** (-4), 100, c1, 'curvetpar', False)
+frameplot(px,py,dpx,dpy,10 ** (-4), 100, c1, 'curvetcon', True)
+frameplot(bx,by,dbx,dby,10 ** (-4), 100, c1, 'beztpar', False)
+frameplot(bx,by,dbx,dby,10 ** (-4), 100, c1, 'beztcon', True)
+\end{minted}
+
+\vspace*{0.5cm}
+
+Sjáum hér að nafna hreyfimyndanna sem svara til $P$ byrja á 'curvet' en þær sem svara til Bézier-ferilsins hafa nafn sem byrja á 'bezt'. Loks er svo 'par' eða 'con' skeytt aftan á nafnið. 'con' hreyfimyndirnar hava fastan hraða á punktinum en 'par' fylgir bara stikuninni. Munurinn á þessu tvennu er sérstaklega áberandi í kringum miðju Bézier-ferlinsins (þess vegna var hann valinn eins og hann er). Þar sem við höfum ekki enn fundið út úr því að prenta ut hreyfimyndir fylgja þessar fjórar skrár með í zip-skránni á Uglu en eru ekki hér.
 
 \end{document}
